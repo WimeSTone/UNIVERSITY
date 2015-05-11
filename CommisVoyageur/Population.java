@@ -44,7 +44,7 @@ public class Population {
 		int crossoverPossibility;
 
 
-		//выбор родителей
+		//parents choice
 		for(int i = 0; i < population.size(); i++)
 		{
 			int iCandidate, jCandidate;
@@ -106,8 +106,10 @@ public class Population {
 
 
 	@SuppressWarnings("unchecked")
-	private void odnotoch(Chromosome chromosome1, Chromosome chromosome2) 
-        // one-point: create chromosomes, fill masks, compare finess-fx -> get the result
+	
+       private void odnotoch(Chromosome chromosome1, Chromosome chromosome2) 
+        
+       // one-point: create chromosomes, fill masks, compare finess-fx -> get the result
 	{
 
 		Random myRand = new Random();
