@@ -48,7 +48,7 @@ public class Population {
 		for(int i = 0; i < population.size(); i++)
 		{
 			int iCandidate, jCandidate;
-			iCandidate = myRand.nextInt(population.size());  // выбираем родителей произвольно
+			iCandidate = myRand.nextInt(population.size());  // choose parents randomly
 			jCandidate = myRand.nextInt(population.size());
 			//System.out.println("capa = " +population.size()+"i = " +iCandidate+ " j = " + jCandidate);
 			if(population.get(iCandidate).fitnessFunction() < population.get(jCandidate).fitnessFunction())
@@ -76,8 +76,10 @@ public class Population {
 				}
 			}
 		}
-		//кроссинговер
-		for(int i = 0; i < parents.population.size(); i++)//
+
+		//crossover
+
+		for(int i = 0; i < parents.population.size(); i++)
 		{
 			crossoverPossibility = myRand.nextInt(10);
 			if( crossoverPossibility < 9)
@@ -85,7 +87,7 @@ public class Population {
 				int iCandidate, jCandidate;
 				iCandidate = myRand.nextInt(parents.population.size());
 				jCandidate = myRand.nextInt(parents.population.size());
-				odnotoch(parents.population.get(iCandidate), parents.population.get(jCandidate)); // одноточечный, есть ещЄ двухточечный
+				odnotoch(parents.population.get(iCandidate), parents.population.get(jCandidate)); // one-point, two-point is also available
 			}
 
 		}
@@ -105,7 +107,7 @@ public class Population {
 
 	@SuppressWarnings("unchecked")
 	private void odnotoch(Chromosome chromosome1, Chromosome chromosome2) 
-        // вот по одной, заполн€ем маски, сравниваем фитнесс-функции, получаем результат
+        // one-point: create chromosomes, fill masks, compare finess-fx -> get the result
 	{
 
 		Random myRand = new Random();
@@ -159,7 +161,7 @@ public class Population {
 	}
 
 
-	public boolean isVyrod() // проверка попул€ции на вырожденность
+	public boolean isVyrod() // check if population is a singularity
 	{
 		Chromosome current = new Chromosome();
 		current = population.get(0);
@@ -175,7 +177,7 @@ public class Population {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void dvotoch(Chromosome chromosome1, Chromosome chromosome2) // двухточечный кроссинговер
+	private void dvotoch(Chromosome chromosome1, Chromosome chromosome2) // two-point crossover
 	{
 		Random myRand = new Random();
 		int point1 = myRand.nextInt(chromosome1.mask.capacity()-1)+1;
@@ -253,7 +255,7 @@ public class Population {
 	}
 
 
-	public void mutationHARD() // процедура дл€ произвольных мутаций
+	public void mutationHARD() // random mutations procedure
 	{
 		Random randomGenerator = new Random();
 		//int i = randomGenerator.nextInt(population.get(1).mask.size());

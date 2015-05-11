@@ -67,14 +67,14 @@ public  class myGUI extends javax.swing.JFrame implements MouseListener, MouseMo
 				Chromosome.cities = inCities1;
 				text.setText("Searching for a path....");
 				Random myRand = new Random();
-				Population newPopulation = new Population(25);  // инициализация всех нач. условий
+				Population newPopulation = new Population(25);  // initialization
 				int mutationChell = 0;
 				boolean flag = true;
 
 				Chromosome currentSolution = new Chromosome();
 				Random randomGenerator = new Random();
 				currentSolution = newPopulation.solution();
-				int badCount = 0;         // хорошие/плохие решения
+				int badCount = 0;         // good/bad solutions
 				int goodCount = 0;
 
 				while(flag)
@@ -90,7 +90,7 @@ public  class myGUI extends javax.swing.JFrame implements MouseListener, MouseMo
 						if(goodCount==Chromosome.cities.size()*600)
 							flag = false;
 						badCount++;
-						if(badCount==3)       // если количество неблагоприятных исходов дошло до 3 - производим произвольные мутации
+						if(badCount==3)       // if the number of bad solutions reached 3 - commit random mutations
 						{
 							newPopulation.mutationHARD();
 							badCount = 0;
