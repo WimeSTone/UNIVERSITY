@@ -1,4 +1,4 @@
-package example;
+﻿package example;
 
 import java.util.Random;
 import java.util.Vector;
@@ -32,7 +32,7 @@ public  class myGUI extends javax.swing.JFrame implements MouseListener, MouseMo
 {
 
 	Vector<City> inCities1 = new Vector <City> ();
-	Graphics gr; //Объявляем переменную типа Graphics
+	Graphics gr; 
 	Label text;
 
 	public static void main(String[] args) 
@@ -67,14 +67,14 @@ public  class myGUI extends javax.swing.JFrame implements MouseListener, MouseMo
 				Chromosome.cities = inCities1;
 				text.setText("Searching for a path....");
 				Random myRand = new Random();
-				Population newPopulation = new Population(25);
+				Population newPopulation = new Population(25);  // инициализация всех нач. условий
 				int mutationChell = 0;
 				boolean flag = true;
 
 				Chromosome currentSolution = new Chromosome();
 				Random randomGenerator = new Random();
 				currentSolution = newPopulation.solution();
-				int badCount = 0;
+				int badCount = 0;         // хорошие/плохие решения
 				int goodCount = 0;
 
 				while(flag)
@@ -90,7 +90,7 @@ public  class myGUI extends javax.swing.JFrame implements MouseListener, MouseMo
 						if(goodCount==Chromosome.cities.size()*600)
 							flag = false;
 						badCount++;
-						if(badCount==3)
+						if(badCount==3)       // если количество неблагоприятных исходов дошло до 3 - производим произвольные мутации
 						{
 							newPopulation.mutationHARD();
 							badCount = 0;

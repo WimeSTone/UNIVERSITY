@@ -44,11 +44,11 @@ public class Population {
 		int crossoverPossibility;
 
 
-		//parents choice
+		//выбор родителей
 		for(int i = 0; i < population.size(); i++)
 		{
 			int iCandidate, jCandidate;
-			iCandidate = myRand.nextInt(population.size());
+			iCandidate = myRand.nextInt(population.size());  // выбираем родителей произвольно
 			jCandidate = myRand.nextInt(population.size());
 			//System.out.println("capa = " +population.size()+"i = " +iCandidate+ " j = " + jCandidate);
 			if(population.get(iCandidate).fitnessFunction() < population.get(jCandidate).fitnessFunction())
@@ -76,7 +76,7 @@ public class Population {
 				}
 			}
 		}
-		//crossover
+		//кроссинговер
 		for(int i = 0; i < parents.population.size(); i++)//
 		{
 			crossoverPossibility = myRand.nextInt(10);
@@ -85,7 +85,7 @@ public class Population {
 				int iCandidate, jCandidate;
 				iCandidate = myRand.nextInt(parents.population.size());
 				jCandidate = myRand.nextInt(parents.population.size());
-				odnotoch(parents.population.get(iCandidate), parents.population.get(jCandidate));
+				odnotoch(parents.population.get(iCandidate), parents.population.get(jCandidate)); // одноточечный, есть ещЄ двухточечный
 			}
 
 		}
@@ -104,7 +104,8 @@ public class Population {
 
 
 	@SuppressWarnings("unchecked")
-	private void odnotoch(Chromosome chromosome1, Chromosome chromosome2)
+	private void odnotoch(Chromosome chromosome1, Chromosome chromosome2) 
+        // вот по одной, заполн€ем маски, сравниваем фитнесс-функции, получаем результат
 	{
 
 		Random myRand = new Random();
@@ -158,7 +159,7 @@ public class Population {
 	}
 
 
-	public boolean isVyrod()
+	public boolean isVyrod() // проверка попул€ции на вырожденность
 	{
 		Chromosome current = new Chromosome();
 		current = population.get(0);
@@ -174,7 +175,7 @@ public class Population {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void dvotoch(Chromosome chromosome1, Chromosome chromosome2)
+	private void dvotoch(Chromosome chromosome1, Chromosome chromosome2) // двухточечный кроссинговер
 	{
 		Random myRand = new Random();
 		int point1 = myRand.nextInt(chromosome1.mask.capacity()-1)+1;
@@ -252,7 +253,7 @@ public class Population {
 	}
 
 
-	public void mutationHARD()
+	public void mutationHARD() // процедура дл€ произвольных мутаций
 	{
 		Random randomGenerator = new Random();
 		//int i = randomGenerator.nextInt(population.get(1).mask.size());
